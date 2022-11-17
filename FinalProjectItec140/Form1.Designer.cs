@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.picRed = new System.Windows.Forms.PictureBox();
+            this.picBlue = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBlue)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -37,21 +41,45 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // picRed
+            // 
+            this.picRed.BackColor = System.Drawing.Color.Red;
+            this.picRed.Location = new System.Drawing.Point(131, 117);
+            this.picRed.Name = "picRed";
+            this.picRed.Size = new System.Drawing.Size(10, 10);
+            this.picRed.TabIndex = 0;
+            this.picRed.TabStop = false;
+            // 
+            // picBlue
+            // 
+            this.picBlue.BackColor = System.Drawing.Color.Blue;
+            this.picBlue.Location = new System.Drawing.Point(982, 444);
+            this.picBlue.Name = "picBlue";
+            this.picBlue.Size = new System.Drawing.Size(10, 10);
+            this.picBlue.TabIndex = 1;
+            this.picBlue.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.picBlue);
+            this.Controls.Add(this.picRed);
             this.Name = "Form1";
-            this.Text = "Snakes R\' Us!";
+            this.Text = "Not Snake!";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.picRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBlue)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Timer timer1;
+        private PictureBox picRed;
+        private PictureBox picBlue;
     }
 }

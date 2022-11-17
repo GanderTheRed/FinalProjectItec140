@@ -2,8 +2,10 @@ namespace FinalProjectItec140
 {
     public partial class Form1 : Form
     {
-        int vertical = 0;
-        int horizontal = 0;
+        int bvertical = 0;                      //Blues Settings
+        int bhorizontal = 0;
+        int rvertical = 0;                      //Reds Settings
+        int rhorizontal = 0;
 
 
         public Form1()
@@ -13,7 +15,10 @@ namespace FinalProjectItec140
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            picBlue.Top += bvertical;
+            picBlue.Left += bhorizontal;
+            picRed.Top += rvertical;
+            picRed.Left += rhorizontal;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,23 +30,99 @@ namespace FinalProjectItec140
         {
             if(e.KeyCode == Keys.A)
             {
-                horizontal = -10;
-                vertical = 0;
+                if (rhorizontal == 10)
+                {
+
+                }
+                else
+                {
+                    rhorizontal = -10;
+                    rvertical = 0;
+                }
             }
-            if (e.KeyCode == Keys.D)
+            else if (e.KeyCode == Keys.D)
             {
-                horizontal = 10;
-                vertical = 0;
+                if (rhorizontal == -10)
+                {
+
+                }
+                else
+                {
+                    rhorizontal = 10;
+                    rvertical = 0;
+                }
             }
-            if (e.KeyCode == Keys.S)
+            else if (e.KeyCode == Keys.S)
             {
-                horizontal = 0;
-                vertical = 10;
+                if (rvertical == -10)
+                {
+
+                }
+                else
+                {
+                    rhorizontal = 0;
+                    rvertical = 10;
+                }
             }
-            if (e.KeyCode == Keys.W)
+            else if (e.KeyCode == Keys.W)
             {
-                horizontal = 0;
-                vertical = -10;
+                if (rvertical == 10)
+                {
+
+                }
+                else
+                {
+                    rhorizontal = 0;
+                    rvertical = -10;
+                }
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                if (bhorizontal == 10)
+                {
+
+                }
+                else
+                {
+                    bhorizontal = -10;
+                    bvertical = 0;
+                }
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                if (bhorizontal == -10)
+                {
+
+                }
+                else
+                {
+                    bhorizontal = 10;
+                    bvertical = 0;
+                }
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                if (bvertical == -10)
+                {
+
+                }
+                else
+                {
+                    bhorizontal = 0;
+                    bvertical = 10;
+                }
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                if (bvertical == 10)
+                {
+
+                }
+                else
+                {
+                    bhorizontal = 0;
+                    bvertical = -10;
+                }
             }
         }
 
