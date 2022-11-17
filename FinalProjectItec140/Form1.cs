@@ -13,14 +13,6 @@ namespace FinalProjectItec140
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            picSnake.Top += vertical;
-            picSnake.Left += horizontal;
-            if (picSnake.Top < 0 || picSnake.Top == 800 || picSnake.Left < 0 || picSnake.Left == 1200)
-            {
-                timer1.Stop();
-                MessageBox.Show("Game Over!");
-            }
-
 
         }
 
@@ -60,9 +52,7 @@ namespace FinalProjectItec140
 
         private void btnSinglePlayer_Click(object sender, EventArgs e)
         {
-            btnSinglePlayer.Visible = false;
-            btnTwoPlayer.Visible = false;
-            picSnake.Visible = true;
+            
             
         }
     }
