@@ -4,11 +4,25 @@ using System.Windows.Forms;
 
 namespace FinalProjectItec140
 {
-
+    
 
 
     public partial class Form1 : Form
     {
+        
+        int screenWidth = Screen.PrimaryScreen.Bounds.Width;                  //Finds resolution of screen
+        int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+        
+
+        
+
+
+
+
+
+
+
         int bvertical = 0;                      //Blues initial Settings
         int bhorizontal = -10;
         int rvertical = 0;                      //Reds initial Settings
@@ -49,26 +63,33 @@ namespace FinalProjectItec140
 
         public Form1()
         {
+            int startLocationTop = screenHeight;
+            int startLocationLeft = screenWidth;
             InitializeComponent();
-            
+            WindowState = FormWindowState.Maximized;            //Sets window to fullscreen
+            picRed.Top = startLocationTop / 2;                  //Sets starting locations based on screen resolution                
+            picRed.Left = (startLocationLeft / 8);
+            picBlue.Top = startLocationTop / 2;
+            picBlue.Left = (startLocationLeft / 8) * 7;
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
+            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > (screenHeight - 50) && picBlue.Top > (screenHeight - 50)) || (picRed.Left > (screenWidth - 15) && picBlue.Left > (screenWidth - 15)) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
             {
                 timer1.Stop();
                 MessageBox.Show("Draw!");               //Draw conditions (if both players leave the map at the same time or collide)
             }
             else
             {
-                if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > 550 || picRed.Left > 1190)
+                if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > (screenHeight - 50) || picRed.Left > (screenWidth - 15))
                 {
                     timer1.Stop();
                     MessageBox.Show("Red left the map! Blue wins!");            //Win condition for Blue if red leaves the map
                 }
 
-                if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > 550 || picBlue.Left > 1190)
+                if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > (screenHeight - 50) || picBlue.Left > (screenWidth - 15))
                 {
                     timer1.Stop();
                     MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
