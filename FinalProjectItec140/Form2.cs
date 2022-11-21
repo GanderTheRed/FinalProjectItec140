@@ -16,5 +16,17 @@ namespace FinalProjectItec140
         {
             InitializeComponent();
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.modeEasy = rdoEasy.Checked;
+            form1.ShowDialog();
+        }
+
+        public void rdoEasy_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

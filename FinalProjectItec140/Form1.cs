@@ -6,7 +6,8 @@ namespace FinalProjectItec140
 {
     public partial class Form1 : Form
     {
-        
+        public bool modeEasy;
+
         int screenWidth = Screen.PrimaryScreen.Bounds.Width;                  //Finds resolution of screen
         int screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
