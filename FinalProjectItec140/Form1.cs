@@ -12,7 +12,7 @@ namespace FinalProjectItec140
         //TO DO
 
         /*
-         *     
+         *     Add a statement for both self colliding at the same time.
          */
 
 
@@ -183,6 +183,8 @@ namespace FinalProjectItec140
                             this.Close();
                         }
                     }
+
+
 
                     for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picBlue self collided
                     {
