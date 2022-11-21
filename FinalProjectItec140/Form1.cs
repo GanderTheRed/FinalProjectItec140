@@ -8,6 +8,15 @@ namespace FinalProjectItec140
     {
         public bool modeEasy, modeMedium, modeHard;     //Variables for the different game modes.
 
+
+        //TO DO
+
+        /*
+         *      Add self collision statements
+         */
+
+
+
         
 
         int screenWidth = Screen.PrimaryScreen.Bounds.Width;                  //Finds resolution of screen

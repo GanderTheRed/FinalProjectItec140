@@ -33,7 +33,14 @@
             this.rdoMedium = new System.Windows.Forms.RadioButton();
             this.rdoHard = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -92,17 +99,75 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Game Difficulty";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 134);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(280, 238);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Instructions!";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(268, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome to the classic game of Tron!";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(6, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(268, 43);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "To win, you must make your opponent collide with an object or leave the map!";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(6, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Player 1 Controls = WASD (Up, Left, Down, Right)";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(6, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(268, 38);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Player 2 Controls = Arrow Keys (Up, Left, Down, Right)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 15);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Good luck!";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 147);
+            this.ClientSize = new System.Drawing.Size(315, 384);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnPlay);
             this.Name = "Form2";
             this.Text = "Main Menu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -114,5 +179,11 @@
         public RadioButton rdoMedium;
         public RadioButton rdoHard;
         public GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
     }
 }
