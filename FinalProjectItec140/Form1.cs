@@ -12,7 +12,7 @@ namespace FinalProjectItec140
         //TO DO
 
         /*
-         *      Add self collision statements
+         *     
          */
 
 
@@ -180,6 +180,38 @@ namespace FinalProjectItec140
                             timer1.Stop();
                             Controls.Add(CreateRedLine());
                             MessageBox.Show("Game Over! Blue Wins!");
+                            this.Close();
+                        }
+                    }
+
+                    for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picBlue self collided
+                    {
+                        string btop = picBlue.Top.ToString();
+                        string rtop = lstBlueTop.Items[k].ToString();
+                        string bleft = lstBlueLeft.Items[k].ToString();
+                        string rleft = picBlue.Left.ToString();
+
+                        if (rtop == btop && rleft == bleft)
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateBlueLine());
+                            MessageBox.Show("Red wins!");
+                            this.Close();
+                        }
+                    }
+
+                    for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed self collided
+                    {
+                        string btop = picRed.Top.ToString();
+                        string rtop = lstRedTop.Items[k].ToString();
+                        string bleft = lstRedLeft.Items[k].ToString();
+                        string rleft = picRed.Left.ToString();
+
+                        if (rtop == btop && rleft == bleft)
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateRedLine());
+                            MessageBox.Show("Blue wins!");
                             this.Close();
                         }
                     }
