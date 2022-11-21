@@ -6,7 +6,9 @@ namespace FinalProjectItec140
 {
     public partial class Form1 : Form
     {
-        public bool modeEasy;
+        public bool modeEasy, modeMedium, modeHard;     //Variables for the different game modes.
+
+        
 
         int screenWidth = Screen.PrimaryScreen.Bounds.Width;                  //Finds resolution of screen
         int screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -59,85 +61,118 @@ namespace FinalProjectItec140
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > (screenHeight - 50) && picBlue.Top > (screenHeight - 50)) || (picRed.Left > (screenWidth - 15) && picBlue.Left > (screenWidth - 15)) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
+            if (modeEasy == true)                       //Depending on the radio that is checked in form2, changes timer interval.
             {
-                timer1.Stop();
-                MessageBox.Show("Draw!");               //Draw conditions (if both players leave the map at the same time or collide)
+                timer1.Interval = 100;
+                Game();
+            }
+            else if (modeMedium == true)
+            {
+                timer1.Interval = 50;
+                Game();
+            }
+            else if (modeHard == true)
+            {
+                timer1.Interval = 25;               
+                Game();
             }
             else
             {
-                if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > (screenHeight - 50) || picRed.Left > (screenWidth - 15))
+                timer1.Stop();
+                MessageBox.Show("Please select a game mode!");
+                this.Close();
+            }
+                
+
+
+            void Game()                         //gameplay functionality
+            {
+                if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > (screenHeight - 50) && picBlue.Top > (screenHeight - 50)) || (picRed.Left > (screenWidth - 15) && picBlue.Left > (screenWidth - 15)) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
                 {
                     timer1.Stop();
-                    MessageBox.Show("Red left the map! Blue wins!");            //Win condition for Blue if red leaves the map
+                    MessageBox.Show("Draw!");               //Draw conditions (if both players leave the map at the same time or collide)
+                    this.Close();
                 }
-
-                if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > (screenHeight - 50) || picBlue.Left > (screenWidth - 15))
+                else
                 {
-                    timer1.Stop();
-                    MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
-                }
-
-                RedLastTop = picRed.Top;                //Sets previous location variables to red/blues current position.
-                RedLastLeft = picRed.Left;
-                BlueLastTop = picBlue.Top;
-                BlueLastLeft = picBlue.Left;
-
-                Controls.Add(CreateRedLine());          //Creates lines at picRed/picBlues previous position
-                Controls.Add(CreateBlueLine());
-
-                lstRedTop.Items.Add(RedLastTop);        //Adds previous location of picRed/Blue to list boxes
-                lstRedLeft.Items.Add(RedLastLeft);
-                lstBlueTop.Items.Add(BlueLastTop);
-                lstBlueLeft.Items.Add(BlueLastLeft);
-
-                picBlue.Top += bvertical;               //Moves picRed/Blue based on current direction variables
-                picBlue.Left += bhorizontal;
-                picRed.Top += rvertical;
-                picRed.Left += rhorizontal;
-
-                for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
-                {
-                    string btop = lstBlueTop.Items[k].ToString();
-                    string rtop = lstRedTop.Items[k].ToString();
-                    string bleft = lstBlueLeft.Items[k].ToString();
-                    string rleft = lstRedLeft.Items[k].ToString();
-
-                    if (rtop == btop && rleft == bleft)
+                    if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > (screenHeight - 50) || picRed.Left > (screenWidth - 15))
                     {
                         timer1.Stop();
-                        Controls.Add(CreateBlueLine());
-                        MessageBox.Show("Draw!");
+                        MessageBox.Show("Red left the map! Blue wins!");            //Win condition for Blue if red leaves the map
+                        this.Close();
                     }
-                }
 
-                for (int i = 0; i < lstRedTop.Items.Count; i++)             //uses a loop to check previous locations of blue and whether blue is in a game ending area
-                {
-                    string btop = picBlue.Top.ToString();
-                    string rtop = lstRedTop.Items[i].ToString();
-                    string bleft = picBlue.Left.ToString();
-                    string rleft = lstRedLeft.Items[i].ToString();
-
-                    if (rtop == btop && rleft == bleft)
+                    if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > (screenHeight - 50) || picBlue.Left > (screenWidth - 15))
                     {
                         timer1.Stop();
-                        Controls.Add(CreateBlueLine());
-                        MessageBox.Show("Game Over! Red Wins!");
+                        MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
+                        this.Close();
                     }
-                }
 
-                for (int j = 0; j < lstBlueTop.Items.Count; j++)            //uses a loop to check previous locations of red and whether red is in a game ending area
-                {
-                    string rtop = picRed.Top.ToString();
-                    string btop = lstBlueTop.Items[j].ToString();
-                    string bleft = picRed.Left.ToString();
-                    string rleft = lstBlueLeft.Items[j].ToString();
+                    RedLastTop = picRed.Top;                //Sets previous location variables to red/blues current position.
+                    RedLastLeft = picRed.Left;
+                    BlueLastTop = picBlue.Top;
+                    BlueLastLeft = picBlue.Left;
 
-                    if (rtop == btop && rleft == bleft)
+                    Controls.Add(CreateRedLine());          //Creates lines at picRed/picBlues previous position
+                    Controls.Add(CreateBlueLine());
+
+                    lstRedTop.Items.Add(RedLastTop);        //Adds previous location of picRed/Blue to list boxes
+                    lstRedLeft.Items.Add(RedLastLeft);
+                    lstBlueTop.Items.Add(BlueLastTop);
+                    lstBlueLeft.Items.Add(BlueLastLeft);
+
+                    picBlue.Top += bvertical;               //Moves picRed/Blue based on current direction variables
+                    picBlue.Left += bhorizontal;
+                    picRed.Top += rvertical;
+                    picRed.Left += rhorizontal;
+
+                    for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
                     {
-                        timer1.Stop();
-                        Controls.Add(CreateRedLine());
-                        MessageBox.Show("Game Over! Blue Wins!");
+                        string btop = lstBlueTop.Items[k].ToString();
+                        string rtop = lstRedTop.Items[k].ToString();
+                        string bleft = lstBlueLeft.Items[k].ToString();
+                        string rleft = lstRedLeft.Items[k].ToString();
+
+                        if (rtop == btop && rleft == bleft)
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateBlueLine());
+                            MessageBox.Show("Draw!");
+                            this.Close();
+                        }
+                    }
+
+                    for (int i = 0; i < lstRedTop.Items.Count; i++)             //uses a loop to check previous locations of blue and whether blue is in a game ending area
+                    {
+                        string btop = picBlue.Top.ToString();
+                        string rtop = lstRedTop.Items[i].ToString();
+                        string bleft = picBlue.Left.ToString();
+                        string rleft = lstRedLeft.Items[i].ToString();
+
+                        if (rtop == btop && rleft == bleft)
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateBlueLine());
+                            MessageBox.Show("Game Over! Red Wins!");
+                            this.Close();
+                        }
+                    }
+
+                    for (int j = 0; j < lstBlueTop.Items.Count; j++)            //uses a loop to check previous locations of red and whether red is in a game ending area
+                    {
+                        string rtop = picRed.Top.ToString();
+                        string btop = lstBlueTop.Items[j].ToString();
+                        string bleft = picRed.Left.ToString();
+                        string rleft = lstBlueLeft.Items[j].ToString();
+
+                        if (rtop == btop && rleft == bleft)
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateRedLine());
+                            MessageBox.Show("Game Over! Blue Wins!");
+                            this.Close();
+                        }
                     }
                 }
             }

@@ -21,6 +21,10 @@ namespace FinalProjectItec140
         {
             Form1 form1 = new Form1();
             form1.modeEasy = rdoEasy.Checked;
+            form1.modeMedium = rdoMedium.Checked;
+            form1.modeHard = rdoHard.Checked;
+
+
             form1.ShowDialog();
         }
 
