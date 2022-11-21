@@ -39,21 +39,23 @@
             // timer1
             // 
             this.timer1.Enabled = true;
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // picRed
             // 
             this.picRed.BackColor = System.Drawing.Color.Red;
-            this.picRed.Location = new System.Drawing.Point(131, 117);
+            this.picRed.Location = new System.Drawing.Point(20, 250);
             this.picRed.Name = "picRed";
             this.picRed.Size = new System.Drawing.Size(10, 10);
             this.picRed.TabIndex = 0;
             this.picRed.TabStop = false;
+            this.picRed.Click += new System.EventHandler(this.picRed_Click);
             // 
             // picBlue
             // 
             this.picBlue.BackColor = System.Drawing.Color.Blue;
-            this.picBlue.Location = new System.Drawing.Point(982, 444);
+            this.picBlue.Location = new System.Drawing.Point(1150, 250);
             this.picBlue.Name = "picBlue";
             this.picBlue.Size = new System.Drawing.Size(10, 10);
             this.picBlue.TabIndex = 1;
@@ -63,9 +65,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 761);
-            this.Controls.Add(this.picBlue);
+            this.ClientSize = new System.Drawing.Size(1179, 561);
             this.Controls.Add(this.picRed);
+            this.Controls.Add(this.picBlue);
             this.Name = "Form1";
             this.Text = "Not Snake!";
             this.Load += new System.EventHandler(this.Form1_Load);
