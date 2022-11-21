@@ -55,10 +55,10 @@ namespace FinalProjectItec140
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180))
+            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
             {
                 timer1.Stop();
-                MessageBox.Show("Draw!");           //Currently not functioning properly?
+                MessageBox.Show("Draw!");
             }
             else
             {
@@ -74,12 +74,7 @@ namespace FinalProjectItec140
                     MessageBox.Show("Blue left the map! Red wins!");
                 }
 
-                if(picRed.Top == picBlue.Top && picRed.Left == picBlue.Left)
-                {
-                    timer1.Stop();
-                    MessageBox.Show("Draw!");
-                }
-
+               
                 RedLastTop = picRed.Top;
                 RedLastLeft = picRed.Left;
                 BlueLastTop = picBlue.Top;
