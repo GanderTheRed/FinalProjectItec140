@@ -9,23 +9,23 @@ namespace FinalProjectItec140
 
     public partial class Form1 : Form
     {
-        int bvertical = 0;                      //Blues Settings
+        int bvertical = 0;                      //Blues initial Settings
         int bhorizontal = -10;
-        int rvertical = 0;                      //Reds Settings
+        int rvertical = 0;                      //Reds initial Settings
         int rhorizontal = 10;
-        int RedLastTop, RedLastLeft, BlueLastTop, BlueLastLeft;
+        int RedLastTop, RedLastLeft, BlueLastTop, BlueLastLeft;     //Variables to store previous position
 
-        ListBox lstRedTop = new ListBox();
+        ListBox lstRedTop = new ListBox();                  //Listboxes to store location values
         ListBox lstRedLeft = new ListBox();
         ListBox lstBlueTop = new ListBox();
         ListBox lstBlueLeft = new ListBox();
 
         
-        PictureBox CreateBlueLine()
+        PictureBox CreateBlueLine()                     //Function to spawn a picture box for Blue
         {
             PictureBox Blue = new PictureBox()
             {
-                Size = new Size(10, 10),
+                Size = new Size(10, 10),                //Properties of the picturebox
                 BackColor = Color.Blue,
                 Top = BlueLastTop,
                 Left = BlueLastLeft,
@@ -34,11 +34,11 @@ namespace FinalProjectItec140
             return Blue;
             
         }
-        PictureBox CreateRedLine()
+        PictureBox CreateRedLine()                      //Function to spawn a picture box for Blue
         {
             PictureBox Red = new PictureBox()
             {
-                Size = new Size(10, 10),
+                Size = new Size(10, 10),                //Properties of the picturebox
                 BackColor = Color.Red,
                 Top = RedLastTop,
                 Left = RedLastLeft,
@@ -58,42 +58,42 @@ namespace FinalProjectItec140
             if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180) || (picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0))
             {
                 timer1.Stop();
-                MessageBox.Show("Draw!");
+                MessageBox.Show("Draw!");               //Draw conditions (if both players leave the map at the same time or collide)
             }
             else
             {
                 if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > 550 || picRed.Left > 1190)
                 {
                     timer1.Stop();
-                    MessageBox.Show("Red left the map! Blue wins!");
+                    MessageBox.Show("Red left the map! Blue wins!");            //Win condition for Blue if red leaves the map
                 }
 
                 if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > 550 || picBlue.Left > 1190)
                 {
                     timer1.Stop();
-                    MessageBox.Show("Blue left the map! Red wins!");
+                    MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
                 }
 
                
-                RedLastTop = picRed.Top;
+                RedLastTop = picRed.Top;                //Sets previous location variables to red/blues current position.
                 RedLastLeft = picRed.Left;
                 BlueLastTop = picBlue.Top;
                 BlueLastLeft = picBlue.Left;
 
-                Controls.Add(CreateRedLine());
+                Controls.Add(CreateRedLine());          //Creates lines at picRed/picBlues previous position
                 Controls.Add(CreateBlueLine());
 
-                lstRedTop.Items.Add(RedLastTop);
+                lstRedTop.Items.Add(RedLastTop);        //Adds previous location of picRed/Blue to list boxes
                 lstRedLeft.Items.Add(RedLastLeft);
                 lstBlueTop.Items.Add(BlueLastTop);
                 lstBlueLeft.Items.Add(BlueLastLeft);
 
-                picBlue.Top += bvertical;
+                picBlue.Top += bvertical;               //Moves picRed/Blue based on current direction variables
                 picBlue.Left += bhorizontal;
                 picRed.Top += rvertical;
                 picRed.Left += rhorizontal;
 
-                for (int k = 0; k < lstRedTop.Items.Count; k++)
+                for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
                 {
                     string btop = lstBlueTop.Items[k].ToString();
                     string rtop = lstRedTop.Items[k].ToString();
@@ -108,7 +108,7 @@ namespace FinalProjectItec140
                     }
                 }
 
-                for (int i = 0; i < lstRedTop.Items.Count; i++)
+                for (int i = 0; i < lstRedTop.Items.Count; i++)             //uses a loop to check previous locations of blue and whether blue is in a game ending area
                 {
                     string btop = picBlue.Top.ToString();
                     string rtop = lstRedTop.Items[i].ToString();
@@ -123,7 +123,7 @@ namespace FinalProjectItec140
                     }
                 }
 
-                for (int j = 0; j < lstBlueTop.Items.Count; j++)
+                for (int j = 0; j < lstBlueTop.Items.Count; j++)            //uses a loop to check previous locations of red and whether red is in a game ending area
                 {
                     string rtop = picRed.Top.ToString();
                     string btop = lstBlueTop.Items[j].ToString();
@@ -147,17 +147,17 @@ namespace FinalProjectItec140
             
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)           //Keypress events
         {
             if (e.KeyCode == Keys.A)
             {
                 if (rhorizontal == 10)
                 {
-
+                    //if one player tries to invert their tron, do nothing
                 }
                 else
-                {
-                    rhorizontal = -10;
+                {   
+                    rhorizontal = -10;      //Otherwise change to selected direction.
                     rvertical = 0;
                 }
             }
