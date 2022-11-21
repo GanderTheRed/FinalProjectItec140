@@ -4,24 +4,11 @@ using System.Windows.Forms;
 
 namespace FinalProjectItec140
 {
-    
-
-
     public partial class Form1 : Form
     {
         
         int screenWidth = Screen.PrimaryScreen.Bounds.Width;                  //Finds resolution of screen
         int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-
-        
-
-        
-
-
-
-
-
-
 
         int bvertical = 0;                      //Blues initial Settings
         int bhorizontal = -10;
@@ -33,7 +20,6 @@ namespace FinalProjectItec140
         ListBox lstRedLeft = new ListBox();
         ListBox lstBlueTop = new ListBox();
         ListBox lstBlueLeft = new ListBox();
-
         
         PictureBox CreateBlueLine()                     //Function to spawn a picture box for Blue
         {
@@ -44,9 +30,7 @@ namespace FinalProjectItec140
                 Top = BlueLastTop,
                 Left = BlueLastLeft,
             };
-
             return Blue;
-            
         }
         PictureBox CreateRedLine()                      //Function to spawn a picture box for Blue
         {
@@ -57,7 +41,6 @@ namespace FinalProjectItec140
                 Top = RedLastTop,
                 Left = RedLastLeft,
             };
-
             return Red;
         }
 
@@ -71,7 +54,6 @@ namespace FinalProjectItec140
             picRed.Left = (startLocationLeft / 8);
             picBlue.Top = startLocationTop / 2;
             picBlue.Left = (startLocationLeft / 8) * 7;
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -95,7 +77,6 @@ namespace FinalProjectItec140
                     MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
                 }
 
-               
                 RedLastTop = picRed.Top;                //Sets previous location variables to red/blues current position.
                 RedLastLeft = picRed.Left;
                 BlueLastTop = picBlue.Top;
@@ -158,8 +139,6 @@ namespace FinalProjectItec140
                         MessageBox.Show("Game Over! Blue Wins!");
                     }
                 }
-
-                
             }
         }
 
