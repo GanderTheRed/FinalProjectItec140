@@ -55,7 +55,7 @@
             // picBlue
             // 
             this.picBlue.BackColor = System.Drawing.Color.Blue;
-            this.picBlue.Location = new System.Drawing.Point(1150, 250);
+            this.picBlue.Location = new System.Drawing.Point(1160, 250);
             this.picBlue.Name = "picBlue";
             this.picBlue.Size = new System.Drawing.Size(10, 10);
             this.picBlue.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 561);
+            this.ClientSize = new System.Drawing.Size(1189, 561);
             this.Controls.Add(this.picRed);
             this.Controls.Add(this.picBlue);
             this.Name = "Form1";

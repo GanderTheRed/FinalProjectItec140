@@ -55,20 +55,20 @@ namespace FinalProjectItec140
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((picRed.Top == 0 && picBlue.Top == 0) || (picRed.Left == 0 && picBlue.Left == 0) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180))
+            if ((picRed.Top == picBlue.Top) && (picRed.Left == picBlue.Left) || (picRed.Top > 550 && picBlue.Top > 550) || (picRed.Left > 1180 && picBlue.Left > 1180))
             {
                 timer1.Stop();
-                MessageBox.Show("Draw!");
+                MessageBox.Show("Draw!");           //Currently not functioning properly?
             }
             else
             {
-                if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > 550 || picRed.Left > 1180)
+                if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > 550 || picRed.Left > 1190)
                 {
                     timer1.Stop();
                     MessageBox.Show("Red left the map! Blue wins!");
                 }
 
-                if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > 550 || picBlue.Left > 1180)
+                if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > 550 || picBlue.Left > 1190)
                 {
                     timer1.Stop();
                     MessageBox.Show("Blue left the map! Red wins!");
@@ -79,13 +79,14 @@ namespace FinalProjectItec140
                     timer1.Stop();
                     MessageBox.Show("Draw!");
                 }
-                Controls.Add(CreateRedLine());
-                Controls.Add(CreateBlueLine());
 
                 RedLastTop = picRed.Top;
                 RedLastLeft = picRed.Left;
                 BlueLastTop = picBlue.Top;
                 BlueLastLeft = picBlue.Left;
+
+                Controls.Add(CreateRedLine());
+                Controls.Add(CreateBlueLine());
 
                 lstRedTop.Items.Add(RedLastTop);
                 lstRedLeft.Items.Add(RedLastLeft);
@@ -96,6 +97,21 @@ namespace FinalProjectItec140
                 picBlue.Left += bhorizontal;
                 picRed.Top += rvertical;
                 picRed.Left += rhorizontal;
+
+                for (int k = 0; k < lstRedTop.Items.Count; k++)
+                {
+                    string btop = lstBlueTop.Items[k].ToString();
+                    string rtop = lstRedTop.Items[k].ToString();
+                    string bleft = lstBlueLeft.Items[k].ToString();
+                    string rleft = lstRedLeft.Items[k].ToString();
+
+                    if (rtop == btop && rleft == bleft)
+                    {
+                        timer1.Stop();
+                        Controls.Add(CreateBlueLine());
+                        MessageBox.Show("Draw!");
+                    }
+                }
 
                 for (int i = 0; i < lstRedTop.Items.Count; i++)
                 {
@@ -126,6 +142,8 @@ namespace FinalProjectItec140
                         MessageBox.Show("Game Over! Blue Wins!");
                     }
                 }
+
+                
             }
         }
 
