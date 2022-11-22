@@ -136,6 +136,26 @@ namespace FinalProjectItec140
                     picRed.Top += rvertical;
                     picRed.Left += rhorizontal;
 
+                    /*for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
+                    {
+                        string btop = lstBlueTop.Items[k].ToString();
+                        string rtop = lstRedTop.Items[k].ToString();
+                        string bleft = lstBlueLeft.Items[k].ToString();
+                        string rleft = lstRedLeft.Items[k].ToString();                  //need to fix this to show a draw when both trons collide with themselves at the same time
+                        string b2top = picBlue.Top.ToString();
+                        string r2top = picRed.Top.ToString();
+                        string b2left = picBlue.Left.ToString();
+                        string r2left = picRed.Left.ToString();
+
+                        if ((rtop == btop && rleft == bleft) || (b2top == r2top && b2left == r2left))
+                        {
+                            timer1.Stop();
+                            Controls.Add(CreateBlueLine());
+                            MessageBox.Show("Draw!");
+                            this.Close();
+                        }
+                    }*/
+
                     for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
                     {
                         string btop = lstBlueTop.Items[k].ToString();
