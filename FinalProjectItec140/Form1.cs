@@ -136,7 +136,7 @@ namespace FinalProjectItec140
                     picRed.Top += rvertical;
                     picRed.Left += rhorizontal;
 
-                    /*for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
+                    for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
                     {
                         string btop = lstBlueTop.Items[k].ToString();
                         string rtop = lstRedTop.Items[k].ToString();
@@ -147,14 +147,20 @@ namespace FinalProjectItec140
                         string b2left = picBlue.Left.ToString();
                         string r2left = picRed.Left.ToString();
 
-                        if ((rtop == btop && rleft == bleft) || (b2top == r2top && b2left == r2left))
+                        if ((rtop == btop && rleft == bleft) || ((b2top == btop && b2left == bleft) && (r2top == rtop && r2left == rleft)))
                         {
                             timer1.Stop();
                             Controls.Add(CreateBlueLine());
+                            Controls.Add(CreateRedLine());
                             MessageBox.Show("Draw!");
                             this.Close();
                         }
-                    }*/
+                        //integrate the other for agruements here
+
+
+
+
+                    }
 
                     for (int k = 0; k < lstRedTop.Items.Count; k++)             //uses a loop to check previous locations and whether picRed or picBlue are in game ending areas at the same time
                     {
