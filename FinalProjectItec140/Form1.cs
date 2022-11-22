@@ -104,14 +104,14 @@ namespace FinalProjectItec140
                 }
                 else
                 {
-                    if (picRed.Top == 0 || picRed.Left == 0 || picRed.Top > (screenHeight - 50) || picRed.Left > (screenWidth - 15))
+                    if (picRed.Top < 0 || picRed.Left < 0 || picRed.Top > (screenHeight - 50) || picRed.Left > (screenWidth - 15))
                     {
                         timer1.Stop();
                         MessageBox.Show("Red left the map! Blue wins!");            //Win condition for Blue if red leaves the map
                         this.Close();
                     }
 
-                    if (picBlue.Top == 0 || picBlue.Left == 0 || picBlue.Top > (screenHeight - 50) || picBlue.Left > (screenWidth - 15))
+                    if (picBlue.Top < 0 || picBlue.Left < 0 || picBlue.Top > (screenHeight - 50) || picBlue.Left > (screenWidth - 15))
                     {
                         timer1.Stop();
                         MessageBox.Show("Blue left the map! Red wins!");            //Win condition for Red if blue leaves the map
